@@ -1,0 +1,14 @@
+scikit-learn
+pandas
+matplotlib
+azureml-sdk
+seaborn
+fastapi 
+uvicorn
+
+seaborn
+mlflow
+
+python-dotenv
+python-jose 
+sqlalchemy
