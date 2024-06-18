@@ -1,4 +1,7 @@
 # database.py
+# This file sets up the database connection, defines the data models (Car and Prediction), and includes utility functions (generate_id, create_db_prediction) and the session management dependency (get_db).
+# It's essential to define the database schema and connection details first because other parts of the application will depend on these models and utilities.
+
 from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
 from dotenv import load_dotenv
