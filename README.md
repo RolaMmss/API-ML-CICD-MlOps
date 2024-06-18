@@ -43,3 +43,17 @@ Votre client, un revendeur de voiture, souhaite la création d'une application p
     tour_moteur : en tours par minute (pas de conversion nécessaire)
     consommation_ville : en litres aux 100 km (1 mile par gallon = 0,425 km par litre)
     consommation_autoroute : en litres aux 100 km
+
+
+steps:
+- create a virtual environment : python3 -m venv myenv
+- activate the virtual environment : source myenv/bin/activate
+- execute the requirements file to install all dependencies : pip install -r requirements.txt
+- Create and import tables: 
+    sqlite3 cars.db < database_building/create_table.sql
+    sqlite3 cars.db  < database_building/import_table.sql
+- Execute data_cleaning.py to get the cleaned table : first_run_2017_CleanDataset
+- Execute modelisation.py
+- Launch MLflow : mlflow ui
+- Test the API :
+    - Go to api folder -->  

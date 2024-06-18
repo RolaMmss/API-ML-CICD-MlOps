@@ -1,9 +1,23 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
+import sqlite3
 
-df = pd.read_csv('prix_voiture.csv')
-with open('random_forest.pkl', 'rb') as file:
+# df = pd.read_csv('prix_voiture.csv')
+ # Get the absolute path to the cars.db file located in the parent directory
+db_path = os.path.abspath("cars.db")
+
+# Connect to the existing cars.db file
+connection = sqlite3.connect(db_path)
+
+df = pd.read_sql_query("SELECT * FROM first_run_2017_CleanDataset", connection)
+print(df)
+
+
+connection.close()
+
+with open('./model/random_forest_model.pkl', 'rb') as file:  
     model = pickle.load(file)
     # code pour importer le modele depuis un fichier avec pickle
 ##########################################################################################
