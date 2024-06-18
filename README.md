@@ -110,8 +110,9 @@ Conversions:
         - docker run -p 8000:8001 dockerimage3:latest
         - then /docs
         Remark: Each time you build a new image, you have to go to Docker extension in vscode to delete the existant containers.
-    
-    
+    - tag the image before pushing it to dockerhub
+        -
+
     - Before pushing the image to Azure, tag the Docker Image with the Azure Container Registry (ACR) repository location. 
         Via Azure Portal:
             - Log in to the Azure portal (https://portal.azure.com).
