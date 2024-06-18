@@ -1,59 +1,101 @@
-# API-ML-CICD-MlOps# Realiser-une-application-d-estimation-de-prix-d-une-voiture
-Votre client, un revendeur de voiture, souhaite la création d'une application pouvant estimer le prix d'une voiture.
+# API-ML-CICD-MlOps# 
 
-# Définitions
-    car_ID : un identifiant unique pour chaque voiture dans l'ensemble de données.
-    symboling : le niveau de risque d'assurance de la voiture, où -2 est le plus risqué et +3 est le moins risqué.
-    CarName : le nom de la voiture, comprenant à la fois la marque et le modèle.
-    fueltype : le type de carburant utilisé par la voiture (soit "essence" ou "diesel").
-    aspiration : si la voiture est à aspiration naturelle ou turbocompressée.
-    doornumber : le nombre de portes de la voiture (soit "deux" ou "quatre").
-    carbody : le style de carrosserie de la voiture (par exemple, berline, hatchback, convertible, etc.).
-    drivewheel : le type de transmission utilisé par la voiture (par exemple, transmission à traction avant, transmission à propulsion arrière, transmission intégrale).
-    enginelocation : l'emplacement du moteur (soit "avant" ou "arrière").
-    wheelbase : la distance entre les roues avant et arrière de la voiture.
-    carlength : la longueur totale de la voiture.
-    carwidth : la largeur totale de la voiture.
-    carheight : la hauteur totale de la voiture.
-    curbweight : le poids de la voiture sans aucun occupant ni cargaison.
-    enginetype : le type de moteur utilisé par la voiture (par exemple, quatre cylindres, six cylindres, rotatif, etc.).
-    cylindernumber : le nombre de cylindres dans le moteur de la voiture.
-    enginesize : la taille du moteur de la voiture en centimètres cubes (cc).
-    fuelsystem : le type de système de carburant utilisé par la voiture (par exemple, carburé, à injection de carburant).
-    boreratio : le rapport du diamètre des cylindres du moteur à leur longueur.
-    stroke : la distance parcourue par le piston en montée et en descente dans les cylindres du moteur.
-    compressionratio : le rapport du volume de la chambre de combustion du moteur lorsque le piston est en bas de sa course par rapport à lorsqu'il est en haut de sa course.
-    horsepower : la puissance du moteur de la voiture en chevaux-vapeur (cv).
-    peakrpm : la vitesse de rotation du moteur à laquelle la puissance maximale de la voiture est produite.
-    citympg : l'économie de carburant de la voiture en miles par gallon (mpg) en conditions de conduite en ville.
-    highwaympg : l'économie de carburant de la voiture en miles par gallon (mpg) en conditions de conduite sur autoroute.
-    price : le prix de détail suggéré par le fabricant (MSRP) de la voiture en dollars américains.
+# Building a Car Price Estimation Application
 
-# Voici les conversions pour transformer les unités américaines en unités françaises :
+Your client, a car dealer, wants the creation of an application that can estimate the price of a car.
 
-    empattement : en mètre (1 pouce = 0,0254 mètre)
-    longueur : en mètre
-    largeur : en mètre
-    hauteur : en mètre
-    poids_vehicule : en kilogramme (1 livre = 0,453592 kilogramme)
-    taille_moteur : en litre (1 pouce cube = 0,0163871 litre)
-    taux_alésage : en millimètre (1 pouce = 25,4 millimètres)
-    course : en millimètre
-    taux_compression : en ratio (pas de conversion nécessaire)
-    tour_moteur : en tours par minute (pas de conversion nécessaire)
-    consommation_ville : en litres aux 100 km (1 mile par gallon = 0,425 km par litre)
-    consommation_autoroute : en litres aux 100 km
+# Definitions:
 
+    car_ID: Unique identifier for each car in the dataset.
+    symboling: Insurance risk rating of the car, where -2 is the most risky and +3 is the least risky.
+    CarName: The name of the car, including both the brand and model.
+    fueltype: The type of fuel used by the car (either "essence" or "diesel").
+    aspiration: Whether the car is naturally aspirated or turbocharged.
+    doornumber: The number of doors on the car (either "deux" or "quatre").
+    carbody: The body style of the car (e.g., sedan, hatchback, convertible, etc.).
+    drivewheel: The type of transmission used by the car (e.g., front-wheel drive, rear-wheel drive, all-wheel drive).
+    enginelocation: The location of the engine (either "avant" or "arrière").
+    wheelbase: The distance between the front and rear wheels of the car.
+    carlength: The total length of the car.
+    carwidth: The total width of the car.
+    carheight: The total height of the car.
+    curbweight: The weight of the car without any occupants or cargo.
+    enginetype: The type of engine used by the car (e.g., four cylinders, six cylinders, rotary, etc.).
+    cylindernumber: The number of cylinders in the car's engine.
+    enginesize: The size of the car's engine in cubic centimeters (cc).
+    fuelsystem: The type of fuel system used by the car (e.g., carbureted, fuel injected).
+    boreratio: The ratio of the diameter of the engine cylinders to their length.
+    stroke: The distance traveled by the piston up and down in the engine cylinders.
+    compressionratio: The ratio of the volume of the engine's combustion chamber when the piston is at the bottom of its stroke compared to when it is at the top.
+    horsepower: The power of the car's engine in horsepower (hp).
+    peakrpm: The engine speed at which the car's maximum power is produced.
+    citympg: The car's fuel economy in miles per gallon (mpg) under city driving conditions.
+    highwaympg: The car's fuel economy in miles per gallon (mpg) under highway driving conditions.
+    price: The manufacturer's suggested retail price (MSRP) of the car in US dollars.
 
-steps:
-- create a virtual environment : python3 -m venv myenv
-- activate the virtual environment : source myenv/bin/activate
-- execute the requirements file to install all dependencies : pip install -r requirements.txt
+Conversions:
+
+    empattement: in meters (1 inch = 0.0254 meters)
+    longueur: in meters
+    largeur: in meters
+    hauteur: in meters
+    poids_vehicule: in kilograms (1 pound = 0.453592 kilograms)
+    taille_moteur: in liters (1 cubic inch = 0.0163871 liters)
+    taux_alésage: in millimeters (1 inch = 25.4 millimeters)
+    course: in millimeters
+    taux_compression: ratio (no conversion needed)
+    tour_moteur: in revolutions per minute (no conversion needed)
+    consommation_ville: in liters per 100 kilometers (1 mile per gallon = 0.425 kilometers per liter)
+    consommation_autoroute: in liters per 100 kilometers
+
+# Steps:
+- Create a virtual environment : python3 -m venv myenv
+- Activate the virtual environment : source myenv/bin/activate
+- Execute the requirements file to install all dependencies : pip install -r requirements.txt
 - Create and import tables: 
     sqlite3 cars.db < database_building/create_table.sql
     sqlite3 cars.db  < database_building/import_table.sql
 - Execute data_cleaning.py to get the cleaned table : first_run_2017_CleanDataset
 - Execute modelisation.py
 - Launch MLflow : mlflow ui
+- Create .env file to save all secret info such as : 
+        - DATABASE_URL=sqlite:///./cars.db
+        - secret key . You may generate a secret key by:
+                import secrets
+                # Generate a random 32-byte (256-bit) key
+                secret_key = secrets.token_hex(32)
+                print(secret_key)
+        - ALGORITHM
+        - USERNAME
+        - PASSWORD
 - Test the API :
-    - Go to api folder -->  
+    -  python3 -m api.main
+    - a FASTAPI Swaggge UI will open. Click on predict then on Try it out to generate a prediction. Fille the requested body for example:
+        {"etat_de_route": "1",
+        "carburant": "essence",
+        "turbo": "turbo",
+        "nombre_portes": "quatre",
+        "type_vehicule": "berline",
+        "roues_motrices": "traction",
+        "emplacement_moteur": "avant",
+        "empattement": 2.69,
+        "longueur": 4.89,
+        "largeur": 1.81,
+        "hauteur": 1.41,
+        "poids_vehicule": 1400,
+        "type_moteur": "ohc",
+        "nombre_cylindres": "five",
+        "taille_moteur": 2,
+        "systeme_carburant": "mpfi",
+        "taux_alésage": 79,
+        "course": 86.36,
+        "taux_compression": 8,
+        "chevaux": 140,
+        "tour_moteur": 5500,
+        "consommation_ville": 13,
+        "consommation_autoroute": 11,
+        "marque": "audi",
+        "modèle": "4000"
+        }
+        Then execute. You will get an error : "Not authenticated". You need to generate a token.
+        Execute utils.py to generate a token, copy it, then click on Authorize.
