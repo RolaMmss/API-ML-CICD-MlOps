@@ -12,3 +12,4 @@ mlflow
 python-dotenv
 python-jose 
 sqlalchemy
+pytest

@@ -104,34 +104,16 @@ Conversions:
         Then execute. You will get an error : "Not authenticated". You need to generate a token.
         Execute utils.py to generate a token, copy it, then click on Authorize.
 ## Deploy the API
-- Build the Docker Image: 
-    - test l'image en locale:
+- Build and test the Docker Image locally: 
         - docker build -t dockerimage3:latest -f api/Dockerfile .
         - docker run -p 8000:8001 dockerimage3:latest
         - then /docs
         Remark: Each time you build a new image, you have to go to Docker extension in vscode to delete the existant containers.
-    - tag the image before pushing it to dockerhub
-        -
+- Tag the image before pushing it to dockerhub
+        - docker login
+        - docker tag dockerimage3 rola123/repo_docker:latest
+        - docker push rola123/repo_docker:latest
 
-    - Before pushing the image to Azure, tag the Docker Image with the Azure Container Registry (ACR) repository location. 
-        Via Azure Portal:
-            - Log in to the Azure portal (https://portal.azure.com).
-            - Navigate to "Create a resource" > "Containers" > "Container Registry".
-            - Fill in the required details like subscription, resource group, registry name, region, SKU (choose Basic, Standard, or Premium), and admin user access.
-            - Click "Review + create" and then "Create" to create the registry.
-        docker tag <local-image-name> <acr-login-server>/<image-name>:<tag>
-        ( docker tag dockerimage registryrola.azurecr.io/dockerimage:v1 )
-    - Push your Docker image to Azure Container Registry: 
-        docker push <acr-login-server>/<image-name>:<tag>
-        docker push registryrola.azurecr.io/dockerimage:v1
-    Alternatively usint the terminal:
-        - az acr create --resource-group <resource-group-name> --name <acr-name> --sku Basic --location <azure-region>
-
-        - docker build -t dockerimage2 -f api/Dockerfile .
-        - az acr login --name registryrola
-        - docker tag dockerimage2:latest registryrola.azurecr.io/dockerimage2:latest
-        - docker push registryrola.azurecr.io/dockerimage2:latest
-    Remark: to display all available docker images : docker images -a
 
 
 
