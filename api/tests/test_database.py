@@ -2,7 +2,7 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database import Base, Car, Prediction, generate_id, create_db_prediction
+from api.database import Base, Car, Prediction, generate_id, create_db_prediction
 
 # Use an in-memory SQLite database for testing
 DATABASE_URL = "sqlite:///:memory:"

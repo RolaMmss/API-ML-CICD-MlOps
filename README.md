@@ -114,6 +114,8 @@ Conversions:
         - docker tag dockerimage3 rola123/repo_docker:latest
         - docker push rola123/repo_docker:latest
 
+# Run the pytests : 
+PYTHONPATH=./ pytest api/tests/
 
 
 

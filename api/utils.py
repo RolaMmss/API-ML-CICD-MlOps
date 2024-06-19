@@ -60,7 +60,7 @@ async def has_access(credentials: HTTPAuthorizationCredentials = Depends(HTTPBea
 
 
 def predict_single(model, input_data: InputData):
-    input_df = pd.DataFrame([input_data.dict()])
+    input_df = pd.DataFrame([input_data.model_dump()])
     prediction = model.predict(input_df)
     return prediction[0]
 
