@@ -34,7 +34,7 @@ if __name__ == "__main__":
     # Base Model: Base is the declarative base class for SQLAlchemy models.
     Base.metadata.create_all(bind=engine)
     args = sys.argv
-    port = 8001
+    port = 8000
     if len(args) > 1:
         port_string = args[1]
         port = int(port_string)
