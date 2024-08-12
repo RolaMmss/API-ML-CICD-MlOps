@@ -117,6 +117,8 @@ PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this wil
         - docker tag dockerimage repo_docker:latest
         - docker push rola123/repo_docker:latest
 
+## Run streamlit
+streamlit run streamlit.py
 
 # Create Azure Container Instance
 Execute create_ACR.sh in the terminal as follows:
