@@ -103,19 +103,26 @@ Conversions:
         }
         Then execute. You will get an error : "Not authenticated". You need to generate a token.
         Execute utils.py to generate a token, copy it, then click on Authorize.
+  # Run the pytests : 
+PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this will lead to the correct path)
+
 ## Deploy the API
 - Build and test the Docker Image locally: 
-        - docker build -t dockerimage3:latest -f api/Dockerfile .
-        - docker run -p 8000:8001 dockerimage3:latest
+        - docker build -t dockerimage:latest -f api/Dockerfile .
+        - docker run -p 8000:8000 dockerimage:latest
         - then /docs
         Remark: Each time you build a new image, you have to go to Docker extension in vscode to delete the existant containers.
 - Tag the image before pushing it to dockerhub
         - docker login
-        - docker tag dockerimage3 rola123/repo_docker:latest
+        - docker tag dockerimage repo_docker:latest
         - docker push rola123/repo_docker:latest
 
-# Run the pytests : 
-PYTHONPATH=./ pytest api/tests/
+
+# Create Azure Container Instance
+Execute create_ACR.sh in the terminal as follows:
+    cd to the directory root next to api,model, .env, etc...
+    chmod +x scripts/create_ACR.sh
+    .scripts/create_ACR.sh
 
 
 
