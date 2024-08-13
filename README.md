@@ -106,10 +106,11 @@ Conversions:
   # Run the pytests : 
 PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this will lead to the correct path)
 
-## Deploy the API
+## Deploy the API and streamlit
 - Build and test the Docker Image locally: 
         - docker build -t dockerimage:latest -f api/Dockerfile .
-        - docker run -p 8000:8000 dockerimage:latest
+        <!-- - docker run -p 8000:8000 dockerimage:latest -->
+        - docker run -p 8501:8501 -p 8000:8000 dockerimage:latest
         - then /docs
         Remark: Each time you build a new image, you have to go to Docker extension in vscode to delete the existant containers.
 - Tag the image before pushing it to dockerhub
@@ -119,6 +120,7 @@ PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this wil
 
 ## Run streamlit
 streamlit run streamlit.py
+
 
 # Create Azure Container Instance
 Execute create_ACR.sh in the terminal as follows:
