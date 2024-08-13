@@ -34,14 +34,14 @@ if __name__ == "__main__":
     # Base Model: Base is the declarative base class for SQLAlchemy models.
     Base.metadata.create_all(bind=engine)
     args = sys.argv
-    port = 8000
+    port = 8000 
     if len(args) > 1:
         port_string = args[1]
         port = int(port_string)
 
     uvicorn.run(app, host="0.0.0.0", port=port)
     
-    
 # To run this FastAPI application, you can use the uvicorn server en mode module -m:
 # python3 -m api.main 
+
 
