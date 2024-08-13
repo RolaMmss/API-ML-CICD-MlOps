@@ -14,6 +14,7 @@
             types: [opened, synchronize, reopened]
             branches:
                 - develop
+                - main
             paths:
               - 'api/**'
               - '.github/workflows/ci.yaml'
@@ -25,9 +26,9 @@
         
             runs-on: ubuntu-latest # os for running the job
             
-            env:
-                SECRET_KEY: ${{ secrets.SECRET_KEY }}
-                APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING }}
+            # env:
+            #     SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            #     APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING }}
             
             steps:
                 - name: Checkout code # checking our the code at current commit that triggers the workflow
@@ -44,13 +45,13 @@
                 - name: Setup python environment # setting python environment to 3.x
                   uses: actions/setup-python@v2
                   with:
-                    python-version: '3.12' # if you want multiple python version run just use matrix strategy in job config. See the documentation of GitHub Actions
+                    python-version: '3.10' # if you want multiple python version run just use matrix strategy in job config. See the documentation of GitHub Actions
             
                 - name: Check Python version # checking the python version to see if 3.x is installed.
                   run: python --version
     
                 - name: Install requirements # install application requirements
-                  run: pip install -r api/requirements.txt
+                  run: pip install -r requirements.txt
                 
                 - name: Install Bandit
                   run: pip install bandit
@@ -65,6 +66,6 @@
     
                 - name: Run Test and Coverage # running tests
                 #   working-directory: ./api
-                  run: pytest api --cov-fail-under=80 -vv
+                  run: PYTHONPATH=./ pytest api/tests/  --cov-fail-under=80 -vv
                   env:
                     APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING }}
