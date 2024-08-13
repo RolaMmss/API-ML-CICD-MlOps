@@ -5,7 +5,7 @@ azureml-sdk
 seaborn
 fastapi 
 uvicorn
-
+streamlit
 seaborn
 mlflow
 

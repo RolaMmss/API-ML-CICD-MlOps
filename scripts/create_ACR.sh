@@ -29,6 +29,6 @@ az container create \
     --cpu 1 \
     --memory 1 \
     --ip-address public \
-    --ports 80 8000 \
+    --ports 8000 8501 \
     --registry-username $DOCKERHUB_USERNAME \
     --registry-password $DOCKERHUB_PASSWORD

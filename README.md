@@ -109,8 +109,7 @@ PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this wil
 ## Deploy the API and streamlit
 - Build and test the Docker Image locally: 
         - docker build -t dockerimage:latest -f api/Dockerfile .
-        <!-- - docker run -p 8000:8000 dockerimage:latest -->
-        - docker run -p 8501:8501 -p 8000:8000 dockerimage:latest
+        - docker run -p 8000:8000 dockerimage:latest
         - then /docs
         Remark: Each time you build a new image, you have to go to Docker extension in vscode to delete the existant containers.
 - Tag the image before pushing it to dockerhub
@@ -126,7 +125,12 @@ streamlit run streamlit.py
 Execute create_ACR.sh in the terminal as follows:
     cd to the directory root next to api,model, .env, etc...
     chmod +x scripts/create_ACR.sh
-    .scripts/create_ACR.sh
+    scripts/create_ACR.sh
+
+# Test deployed api on azure
+- Be sure that ACR container is running on azure.
+- Get IP from ACR, open a new window and add the required port 8000.
+     http://98.66.198.165:8000/docs
 
 
 

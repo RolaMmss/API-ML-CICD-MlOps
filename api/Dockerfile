@@ -22,7 +22,6 @@ COPY . /app
 # ENV PATH ${APP_ROOT}/.local/bin:${PATH}
 
 # Expose the port that FastAPI runs on
-EXPOSE 8501 8000
+EXPOSE 8000
 # Start both FastAPI and Streamlit
-# CMD ["python3", "-m", "api.main"]
-CMD uvicorn api.main:app --host 0.0.0.0 --port 8000 & streamlit run app.py --server.port 8501 --server.enableCORS false --server.address 0.0.0.0
+CMD ["python3", "-m", "api.main"]
