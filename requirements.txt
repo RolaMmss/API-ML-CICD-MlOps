@@ -1,0 +1,17 @@
+scikit-learn==1.4.2
+pandas
+matplotlib
+azureml-sdk
+seaborn
+fastapi 
+uvicorn
+streamlit
+seaborn
+mlflow
+
+python-dotenv
+python-jose 
+sqlalchemy
+pytest
+pytest-asyncio
+httpx

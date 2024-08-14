@@ -1,0 +1,6 @@
+artifact_location: file:///home/utilisateur/Bureau/API-ML-CICD-MlOps/mlruns/238814330562034585
+creation_time: 1718701203860
+experiment_id: '238814330562034585'
+last_update_time: 1718701203860
+lifecycle_stage: active
+name: predict_price
