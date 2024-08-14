@@ -27,6 +27,21 @@ from api.utils import InputData, has_access
 
 
 
+
+
+# Use an in-memory SQLite database for testing
+DATABASE_URL_test = 'sqlite:///:memory:'
+
+# Create a new engine instance
+engine = create_engine(DATABASE_URL_test, connect_args={"check_same_thread": False})
+
+# Create a configured "Session" class
+TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Create tables
+Base.metadata.create_all(bind=engine)
+
+
 client = TestClient(app)
 
 # Mock the has_access dependency to always return True for tests
