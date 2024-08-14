@@ -1,45 +1,39 @@
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, StaticPool
+from sqlalchemy.orm import sessionmaker, Session
 from api.main import app
 from api.database import Base, get_db # Import your models here 
 from api.utils import InputData, has_access
+from typing import Generator
 
 
+TEST_DATABASE_URL = "sqlite:///:memory:"
 
-# Create an in-memory SQLite database for testing
-SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-# Create the database schema
-Base.metadata.create_all(bind=engine)
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+engine = create_engine(TEST_DATABASE_URL, connect_args={
+                       "check_same_thread": False}, poolclass=StaticPool)
+TestingSessionLocal = sessionmaker(
+    autocommit=False, autoflush=False, bind=engine)
 
 
-# Override the get_db dependency to use the test database
+@pytest.fixture
+def session() -> Generator[Session, None, None]:
+    Base.metadata.create_all(bind=engine)
+    db_session = TestingSessionLocal()
+
+    yield db_session
+
+    db_session.close()
+    Base.metadata.drop_all(bind=engine)
+
+
 def override_get_db():
-    try:
-        db = TestingSessionLocal()
-        yield db
-    finally:
-        db.close()
+    database = TestingSessionLocal()
+    yield database
+    database.close()
+
 
 app.dependency_overrides[get_db] = override_get_db
-
-# Fixture for the database session
-@pytest.fixture(scope="function")
-def db_session():
-    Base.metadata.create_all(bind=engine)
-    """Create a new database session for a test."""
-    connection = engine.connect()
-    transaction = connection.begin()
-    session = TestingSessionLocal(bind=connection)
-    
-    yield session
-    
-    session.close()
-    transaction.rollback()
-    connection.close()
 
 
 
@@ -58,7 +52,7 @@ def setup():
     yield
     # You can add teardown code here if needed
 
-def test_predict_endpoint(setup,db_session):
+def test_predict_endpoint(setup,session: Session):
     input_data = {
         "etat_de_route": "clear",
         "carburant": "gas",
