@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from api.database import Base, Car, Prediction, generate_id, create_db_prediction
 
 # Use an in-memory SQLite database for testing
-DATABASE_URL = "sqlite:///:memory:"
+DATABASE_URL = 'sqlite:///:memory:'
 
 # Create a new engine instance
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
