@@ -53,4 +53,4 @@ def predict(
     }
     create_db_prediction(prediction_dict, db)
 
-    return {"prediction": prediction}
+    return {"prediction": prediction} 
