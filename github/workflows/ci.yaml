@@ -85,6 +85,7 @@ on:
     branches:
       - develop
       - main
+      - test-ci-workflow
 
 jobs:
   build:
