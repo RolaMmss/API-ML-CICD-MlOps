@@ -26,7 +26,20 @@ def override_get_db():
 
 app.dependency_overrides[get_db] = override_get_db
 
-
+# Fixture for the database session
+@pytest.fixture(scope="function")
+def db_session():
+    Base.metadata.create_all(bind=engine)
+    """Create a new database session for a test."""
+    connection = engine.connect()
+    transaction = connection.begin()
+    session = TestingSessionLocal(bind=connection)
+    
+    yield session
+    
+    session.close()
+    transaction.rollback()
+    connection.close()
 
 
 
@@ -45,7 +58,7 @@ def setup():
     yield
     # You can add teardown code here if needed
 
-def test_predict_endpoint(setup):
+def test_predict_endpoint(setup,db_session):
     input_data = {
         "etat_de_route": "clear",
         "carburant": "gas",
