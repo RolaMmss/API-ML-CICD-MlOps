@@ -1,8 +1,41 @@
 import pytest
 from fastapi.testclient import TestClient
-from fastapi import Depends
+from sqlalchemy import create_engine, StaticPool
+from sqlalchemy.orm import sessionmaker, Session
 from api.main import app
+from api.database import Base, get_db # Import your models here 
 from api.utils import InputData, has_access
+from typing import Generator
+
+
+TEST_DATABASE_URL = "sqlite:///:memory:"
+
+engine = create_engine(TEST_DATABASE_URL, connect_args={
+                       "check_same_thread": False}, poolclass=StaticPool)
+TestingSessionLocal = sessionmaker(
+    autocommit=False, autoflush=False, bind=engine)
+
+
+@pytest.fixture
+def session() -> Generator[Session, None, None]:
+    Base.metadata.create_all(bind=engine)
+    db_session = TestingSessionLocal()
+
+    yield db_session
+
+    db_session.close()
+    Base.metadata.drop_all(bind=engine)
+
+
+def override_get_db():
+    database = TestingSessionLocal()
+    yield database
+    database.close()
+
+
+app.dependency_overrides[get_db] = override_get_db
+
+
 
 client = TestClient(app)
 
@@ -19,7 +52,7 @@ def setup():
     yield
     # You can add teardown code here if needed
 
-def test_predict_endpoint(setup):
+def test_predict_endpoint(setup,session: Session):
     input_data = {
         "etat_de_route": "clear",
         "carburant": "gas",
