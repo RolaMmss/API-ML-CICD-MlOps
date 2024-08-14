@@ -3,43 +3,31 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from api.main import app
-from api.database import Base, get_db
+from api.database import Base, get_db # Import your models here 
 from api.utils import InputData, has_access
 
 
-# # Create an in-memory SQLite database for testing
-# SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
-# engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-# TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# # Override the get_db dependency to use the test database
-# def override_get_db():
-#     try:
-#         db = TestingSessionLocal()
-#         yield db
-#     finally:
-#         db.close()
-
-# app.dependency_overrides[get_db] = override_get_db
-
-# # Create the database schema
-# Base.metadata.create_all(bind=engine)
-
-
-
-
-
-# Use an in-memory SQLite database for testing
-DATABASE_URL_test = 'sqlite:///:memory:'
-
-# Create a new engine instance
-engine = create_engine(DATABASE_URL_test, connect_args={"check_same_thread": False})
-
-# Create a configured "Session" class
+# Create an in-memory SQLite database for testing
+SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+# Create the database schema
+Base.metadata.create_all(bind=engine)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Create tables
-Base.metadata.create_all(bind=engine)
+
+# Override the get_db dependency to use the test database
+def override_get_db():
+    try:
+        db = TestingSessionLocal()
+        yield db
+    finally:
+        db.close()
+
+app.dependency_overrides[get_db] = override_get_db
+
+
+
 
 
 client = TestClient(app)
