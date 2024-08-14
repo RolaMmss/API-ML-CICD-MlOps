@@ -3,7 +3,11 @@ name: FastAPI continuous deployment workflow.
 on:
   push:
     branches:
+<<<<<<< HEAD
       - main 
+=======
+      - main
+>>>>>>> 8dbf84a4 (final updates)
     paths:
       - 'api/**'
       - '.github/workflows/api_continuous_deployment.yaml'
@@ -21,7 +25,11 @@ jobs:
         app_name: apimodeletemplate   #  It passes the app_name input to the api_deployment.yaml workflow, setting the value to apimodeletemplate.
     secrets: inherit
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     
 >>>>>>> 9533530c (cd)
+=======
+
+>>>>>>> 8dbf84a4 (final updates)
