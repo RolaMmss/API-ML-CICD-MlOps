@@ -19,3 +19,4 @@ jobs:
     with:
         app_name: apimodeletemplate   #  It passes the app_name input to the api_deployment.yaml workflow, setting the value to apimodeletemplate.
     secrets: inherit
+    
