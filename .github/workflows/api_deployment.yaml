@@ -22,7 +22,7 @@ jobs:
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/dockerimage:latest  -f api/Dockerfile .
         echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/dockerimage:latest
- 
+
     - name: Azure Login
       uses: azure/login@v1
       with:
@@ -47,15 +47,15 @@ jobs:
           fi
       
           az container create \
-                --resource-group $RESSOURCE_GROUP \
+                --resource-group ${{ secrets.RESSOURCE_GROUP }} \
                 --name container-instance-api \
-                --image $DOCKERHUB_USERNAME/repo_docker:latest \
+                --image ${{ secrets.DOCKERHUB_USERNAME }}/repo_docker:latest \
                 --cpu 1 \
                 --memory 1 \
                 --ip-address public \
                 --ports 8000 8501 \
-                --registry-username $DOCKERHUB_USERNAME \
-                --registry-password $DOCKERHUB_PASSWORD
+                --registry-username ${{ secrets.DOCKERHUB_USERNAME }} \
+                --registry-password ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Test Endpoint
       run: curl -I container-instance-api.francecentral.azurecontainer.io:8000/docs
