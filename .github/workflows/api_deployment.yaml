@@ -53,6 +53,7 @@ jobs:
                 --cpu 1 \
                 --memory 1 \
                 --ip-address public \
+                --dns-name-label containerinstanceapi \
                 --ports 80 8000 \
                 --registry-username ${{ secrets.DOCKERHUB_USERNAME }} \
                 --registry-password ${{ secrets.DOCKERHUB_PASSWORD }}
