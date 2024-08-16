@@ -2,8 +2,8 @@ name: FastAPI continuous deployment workflow.
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main 
     paths:
       - 'api/**'
       - '.github/workflows/api_continuous_deployment.yaml'
