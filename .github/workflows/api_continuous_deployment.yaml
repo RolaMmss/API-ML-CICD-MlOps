@@ -2,12 +2,17 @@ name: FastAPI continuous deployment workflow.
 
 on:
   push:
+<<<<<<< HEAD
     branches:
 <<<<<<< HEAD
       - main 
 =======
       - main
 >>>>>>> 8dbf84a4 (final updates)
+=======
+    # branches:
+    #   - main 
+>>>>>>> 5f5e1765 (test depl)
     paths:
       - 'api/**'
       - '.github/workflows/api_continuous_deployment.yaml'
