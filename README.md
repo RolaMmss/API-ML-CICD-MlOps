@@ -65,12 +65,11 @@ Conversions:
 ### Store your private infos in a private file
 - Create .env file to save all secret info such as : 
         - DATABASE_URL=sqlite:///./cars.db
-        - secret key 
-        You may generate a secret key by:
-        import secrets
-        # Generate a random 32-byte (256-bit) key
-        secret_key = secrets.token_hex(32)
-        print(secret_key)
+        - secret key . You may generate a secret key by:
+                import secrets
+                # Generate a random 32-byte (256-bit) key
+                secret_key = secrets.token_hex(32)
+                print(secret_key)
         - ALGORITHM
         - USERNAME
         - PASSWORD
@@ -132,7 +131,7 @@ Execute create_ACR.sh in the terminal as follows:
 ## Test deployed api on azure
 - Be sure that ACR container is running on azure.
 - Get IP from ACR, open a new window and add the required port 8000.
-     http://containerinstanceapi.francecentral.azurecontainer.io:8000/docs
+     http://98.66.198.165:8000/docs
 
 
 ## Azure SQL Database Creation Script
