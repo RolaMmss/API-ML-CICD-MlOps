@@ -1,7 +1,7 @@
-# API-ML-CICD-MlOps# 
+# API-ML-CICD-MlOps
 Develop an API that exposes an artificial intelligence model, monitor this model, integrate the API into an application, program automated tests for this model, and create a continuous delivery pipeline for this AI model in an MLOps approach to automate the steps of validation, testing, packaging, and deployment of the model.
 
-# Building a Car Price Estimation Application
+## Building a Car Price Estimation Application
 
 Your client, a car dealer, wants the creation of an application that can estimate the price of a car.
 
