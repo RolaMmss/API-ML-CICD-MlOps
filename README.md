@@ -5,7 +5,7 @@ Develop an API that exposes an artificial intelligence model, monitor this model
 
 Your client, a car dealer, wants the creation of an application that can estimate the price of a car.
 
-# Definitions:
+### Definitions:
 
     car_ID: Unique identifier for each car in the dataset.
     symboling: Insurance risk rating of the car, where -2 is the most risky and +3 is the least risky.
@@ -49,20 +49,20 @@ Conversions:
     consommation_ville: in liters per 100 kilometers (1 mile per gallon = 0.425 kilometers per liter)
     consommation_autoroute: in liters per 100 kilometers
 
-# Steps:
-## Virtual environment and install all dependencies
+## Steps:
+### Virtual environment and install all dependencies
 - Create a virtual environment : python3 -m venv myenv
 - Activate the virtual environment : source myenv/bin/activate
 - Execute the requirements file to install all dependencies : pip install -r requirements.txt
-## Build sqlite databases
+### Build sqlite databases
 - Create and import tables: 
     sqlite3 cars.db < database_building/create_table.sql
     sqlite3 cars.db  < database_building/import_table.sql
 - Execute data_cleaning.py to get the cleaned table : first_run_2017_CleanDataset
-## Modelisation and MLflow
+### Modelisation and MLflow
 - Execute modelisation.py
 - Launch MLflow : mlflow ui
-## Store your private infos in a private file
+### Store your private infos in a private file
 - Create .env file to save all secret info such as : 
         - DATABASE_URL=sqlite:///./cars.db
         - secret key . You may generate a secret key by:
@@ -73,7 +73,7 @@ Conversions:
         - ALGORITHM
         - USERNAME
         - PASSWORD
-## Test the API 
+### Test the API 
     -  python3 -m api.main
     - a FASTAPI Swaggge UI will open. Click on predict then on Try it out to generate a prediction. Fille the requested body for example:
         {"etat_de_route": "1",
@@ -104,10 +104,10 @@ Conversions:
         }
         Then execute. You will get an error : "Not authenticated". You need to generate a token.
         Execute utils.py to generate a token, copy it, then click on Authorize.
-  # Run the pytests : 
+## Run the pytests : 
 PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this will lead to the correct path)
 
-## Deploy the API and streamlit
+### Deploy the API and streamlit
 - Build and test the Docker Image locally: 
         - docker build -t dockerimage:latest -f api/Dockerfile .
         - docker run -p 8000:8000 dockerimage:latest
@@ -118,17 +118,17 @@ PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this wil
         - docker tag dockerimage repo_docker:latest
         - docker push rola123/repo_docker:latest
 
-## Run streamlit
+### Run streamlit
 streamlit run streamlit.py
 
 
-# Create Azure Container Instance
+## Create Azure Container Instance
 Execute create_ACR.sh in the terminal as follows:
     cd to the directory root next to api,model, .env, etc...
     chmod +x scripts/create_ACR.sh
     scripts/create_ACR.sh
 
-# Test deployed api on azure
+## Test deployed api on azure
 - Be sure that ACR container is running on azure.
 - Get IP from ACR, open a new window and add the required port 8000.
      http://98.66.198.165:8000/docs
