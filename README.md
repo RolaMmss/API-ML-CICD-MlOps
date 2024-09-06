@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 # API-ML-CICD-MlOps
 Develop an API that exposes an artificial intelligence model, monitor this model, integrate the API into an application, program automated tests for this model, and create a continuous delivery pipeline for this AI model in an MLOps approach to automate the steps of validation, testing, packaging, and deployment of the model.
+=======
+# API-ML-CICD-MlOps# 
+Développer une API exposant un modèle d’intelligence artificielle, monitorer ce modèle, intégrer l’API dans une application, programmer les tests automatisés de ce modèle, créer une chaîne de livraison continue de ce modèle d'IA dans une approche MLOps pour automatiser les étapes de validation, de test, de packaging* et de déploiement du modèle.
+>>>>>>> 546955c1 (mod readme)
 
 ## Building a Car Price Estimation Application
 
