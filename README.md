@@ -133,15 +133,14 @@ Execute create_ACR.sh in the terminal as follows:
 - Get IP from ACR, open a new window and add the required port 8000.
      http://98.66.198.165:8000/docs
 
-## Create Azure Container Instance
-Execute create_ACR.sh in the terminal as follows:
-    cd to the directory root next to api,model, .env, etc...
-    chmod +x scripts/create_ACR.sh
-    scripts/create_ACR.sh
 
 ## Azure SQL Database Creation Script
 
 This repository contains a shell script (`create_sql_db.sh`) to automate the creation of an Azure SQL Server and an Azure SQL Database using the Azure CLI. The script configures the SQL Server and Database in a pre-existing Azure resource group, along with an optional firewall rule to allow access from all IP addresses.
+### Make it executable by running:     
+  chmod +x scripts/create_Azure_sql_db.sh
+## Run the script:                   
+  ./scripts/create_Azure_sql_db.sh
 
 ### Prerequisites
 
