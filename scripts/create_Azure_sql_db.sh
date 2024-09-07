@@ -23,7 +23,7 @@ az sql server create \
     --admin-user $ADMIN_USER \
     --admin-password $PASSWORD
 
-# Step 6: Create a SQL Database
+# Step 6: Create a SQL Database under the server
 az sql db create \
     --resource-group $RESOURCE_GROUP \
     --server $SERVER_NAME \
@@ -32,7 +32,7 @@ az sql db create \
 
 # Step 7: Configure a firewall rule to allow your IP address to access the server
 MY_IP=$(curl ifconfig.me)
-az sql server firewall-rule create \
+az sql server firewall-rule create \   # This command allows access from all IPs (0.0.0.0)
     --resource-group $RESOURCE_GROUP \
     --server $SERVER_NAME \
     --name AllowYourIP \
@@ -46,3 +46,13 @@ az sql server firewall-rule create \
     --name AllowAzureServices \
     --start-ip-address 0.0.0.0 \
     --end-ip-address 0.0.0.0
+
+
+
+
+# Make it executable by running:     
+#  chmod +x scripts/create_sql_db.sh
+# Run the script:                   
+#  ./scripts/create_sql_db.sh
+
+
