@@ -12,6 +12,9 @@ WORKDIR /app
 # COPY requirements.txt .
 COPY requirements.txt /app/requirements.txt
 
+# Copy .env file into the container
+COPY .env /app
+
 # Install Python Dependencies 
 # --no-cache-dir: Ensures no cache is saved, reducing image size and ensuring fresh installs.
 RUN python3 -m pip install --no-cache-dir --upgrade  -r /app/requirements.txt   

@@ -4,7 +4,7 @@
 from fastapi import HTTPException, status, Depends
 from jose import JWTError, jwt
 import os
-from pydantic import BaseModel
+from pydantic import BaseModel, condecimal
 import pickle
 import pandas as pd
 from dotenv import load_dotenv
@@ -23,7 +23,7 @@ class InputData(BaseModel):
     longueur: float
     largeur: float
     hauteur: float
-    poids_vehicule: int
+    poids_vehicule: condecimal(gt=0) 
     type_moteur: str
     nombre_cylindres: str
     taille_moteur: float
