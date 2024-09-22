@@ -15,3 +15,7 @@ sqlalchemy
 pytest
 pytest-asyncio
 httpx
+
+pydantic 
+starlette 
+typing-extensions
