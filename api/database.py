@@ -71,7 +71,7 @@ class Prediction(Base):
     longueur = Column(Float)
     largeur = Column(Float)
     hauteur = Column(Float)
-    poids_vehicule = Column(Integer)
+    poids_vehicule = Column(Float)
     type_moteur = Column(String)
     nombre_cylindres = Column(String)
     taille_moteur = Column(Float)
