@@ -120,20 +120,20 @@ Conversions:
         - docker tag dockerimage repo_docker:latest
         - docker push rola123/repo_docker:latest
 
-## Run streamlit
+## Run streamlit for the deployed api
 streamlit run streamlit.py
 
-
-# Create Azure Container Instance
+# Remarks:
+## To create Azure Container Instance
 Execute create_ACR.sh in the terminal as follows:
     cd to the directory root next to api,model, .env, etc...
     chmod +x scripts/create_ACR.sh
     scripts/create_ACR.sh
 
-# Test deployed api on azure
+## To test the deployed api on azure
 - Be sure that ACR container is running on azure.
 - Get IP from ACR, open a new window and add the required port 8000.
-     http://98.66.198.165:8000/docs
+     http://20.19.201.109:8000/docs/
 
 
 ## Azure SQL Database Creation Script
@@ -141,7 +141,7 @@ Execute create_ACR.sh in the terminal as follows:
 This repository contains a shell script (`create_sql_db.sh`) to automate the creation of an Azure SQL Server and an Azure SQL Database using the Azure CLI. The script configures the SQL Server and Database in a pre-existing Azure resource group, along with an optional firewall rule to allow access from all IP addresses.
 ### Make it executable by running:     
   chmod +x scripts/create_Azure_sql_db.sh
-## Run the script:                   
+### Run the script:                   
   ./scripts/create_Azure_sql_db.sh
 
 ### Prerequisites
@@ -150,23 +150,6 @@ Before running this script, ensure that you have:
 
 1. An existing **Azure Resource Group**.
 2. The **Azure CLI** installed and configured on your machine. You can install it by following the official [Azure CLI installation guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
-3. You must be logged into your Azure account using the CLI:
-## Azure SQL Database Creation Script
-
-This repository contains a shell script (`create_sql_db.sh`) to automate the creation of an Azure SQL Server and an Azure SQL Database using the Azure CLI. The script configures the SQL Server and Database in a pre-existing Azure resource group, along with an optional firewall rule to allow access from all IP addresses.
-### Make it executable by running:     
-  chmod +x scripts/create_Azure_sql_db.sh
-## Run the script:                   
-  ./scripts/create_Azure_sql_db.sh
-
-### Prerequisites
-
-Before running this script, ensure that you have:
-
-1. An existing **Azure Resource Group**.
-2. The **Azure CLI** installed and configured on your machine. You can install it by following the official [Azure CLI installation guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
-3. You must be logged into your Azure account using the CLI:
-
-
+3. You must be logged into your Azure account using the CLI
 
 

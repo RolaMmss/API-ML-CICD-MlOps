@@ -166,7 +166,7 @@ connection.close()
 
 # URL de ton API FastAPI déployée
 # API_URL = "http://localhost:8000/predict/"  # Remplace par l'URL de ton API en production si nécessaire
-API_URL = "http://4.178.148.19:8000/predict/"
+API_URL = "http://20.19.201.109:8000/predict/"
 # Get the authentication token from the environment variables
 token = os.getenv("token")
 
