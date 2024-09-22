@@ -51,7 +51,7 @@ Conversions:
 
 # Steps:
 ## Virtual environment and install all dependencies
-- Create a virtual environment : python3 -m venv myenv
+- Create a virtual environment : python -m venv myenv
 - Activate the virtual environment : source myenv/bin/activate
 - Execute the requirements file to install all dependencies : pip install -r requirements.txt
 ## Build sqlite databases
@@ -74,7 +74,8 @@ Conversions:
         - USERNAME
         - PASSWORD
 ## Test the API 
-    -  python3 -m api.main
+    -  python -m api.main
+    - http://0.0.0.0:8000/docs
     - a FASTAPI Swaggge UI will open. Click on predict then on Try it out to generate a prediction. Fille the requested body for example:
         {"etat_de_route": "1",
         "carburant": "essence",
@@ -105,7 +106,8 @@ Conversions:
         Then execute. You will get an error : "Not authenticated". You need to generate a token.
         Execute utils.py to generate a token, copy it, then click on Authorize.
   # Run the pytests : 
-PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this will lead to the correct path)
+  - pytest
+  - PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this will lead to the correct path)
 
 ## Deploy the API and streamlit
 - Build and test the Docker Image locally: 
