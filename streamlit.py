@@ -286,16 +286,3 @@ if st.button('Prédire'):
     else:
         st.error(f"Erreur lors de la prédiction via l'API: {response.text}")
 
-
-
-# convert the dictionary to a dataframe
-#     input_df = pd.DataFrame([input_data])
-    
-#     # use the pre-trained model to predict the price
-#     predicted_price = model.predict(input_df)[0]
-    
-#     # show the predicted price on the app
-#     if predicted_price>0:
-#          st.info(f'Prix: {predicted_price:.2f} $')
-#     else:
-#         st.info('The trained data is not reasonable.')

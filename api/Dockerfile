@@ -18,6 +18,8 @@ COPY .env /app
 # Install Python Dependencies 
 # --no-cache-dir: Ensures no cache is saved, reducing image size and ensuring fresh installs.
 RUN python3 -m pip install --no-cache-dir --upgrade  -r /app/requirements.txt   
+RUN apt-get update && \
+    apt-get install -y unixodbc-dev msodbcsql17
 
 # Copy the entire current directory to /app/api inside the Docker container.
 COPY . /app
