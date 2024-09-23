@@ -47,5 +47,5 @@ jobs:
 
       - name: Run tests
         run: |
-          # . myenv/bin/activate
+          . myenv/bin/activate
           pytest
