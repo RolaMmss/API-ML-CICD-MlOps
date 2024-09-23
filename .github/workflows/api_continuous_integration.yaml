@@ -46,6 +46,9 @@ jobs:
 
           pip install -r requirements.txt
 
+      - name: Set PYTHONPATH environment variable
+        run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+
       - name: Run tests
         run: |
           # . myenv/bin/activate
