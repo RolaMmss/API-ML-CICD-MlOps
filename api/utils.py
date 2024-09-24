@@ -77,6 +77,12 @@ def generate_token(to_encode):
     encoded_jwt = jwt.encode(to_encode_dict, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
+# Fonction pour établir une connexion à la base de données
+def connect_to_database():
+    connection_string = f'Driver={DB_Driver};Server=tcp:{server},1433;Database={database};Uid={username};Pwd={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;'
+    conn = pyodbc.connect(connection_string)
+    return conn
+
 if __name__ == "__main__":
     print(generate_token("admin"))
     
