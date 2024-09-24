@@ -1,3 +1,4 @@
+# create_Azure_sql_db.sh
 set -o allexport
 # Load environment variables from .env file
 source .env   

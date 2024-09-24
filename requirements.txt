@@ -21,3 +21,4 @@ pydantic
 starlette 
 typing-extensions
 
+pypyodbc

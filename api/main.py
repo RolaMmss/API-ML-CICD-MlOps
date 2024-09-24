@@ -17,15 +17,6 @@ from fastapi.responses import FileResponse
 # Initialize FastAPI
 app = FastAPI()
 
-# Serve static files (e.g., favicon)
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# Route to serve the favicon
-@app.get("/favicon.ico", include_in_schema=False)
-async def favicon():
-    return FileResponse("static/favicon.ico")
-
-
 # routes
 PROTECTED = [Depends(has_access)]
 
