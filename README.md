@@ -30,10 +30,10 @@ It includes:
 
 
 ## Launch the API
-  - Execute the command to test the API 
-      python -m api.main
-  - Add /docs to the url
-      http://0.0.0.0:8000/docs
+1. Execute the command to test the API 
+    python -m api.main
+2. Add /docs to the url
+    http://0.0.0.0:8000/docs
   - a FASTAPI Swaggge UI will open. Click on predict then on Try it out to generate a prediction. Fill the requested body for example:
 
     {"etat_de_route": "1",
@@ -61,13 +61,13 @@ It includes:
     "consommation_autoroute": 11,
     "marque": "audi",
     "modèle": "4000"
-    }
+  }
 
-    Then execute. You will get an error : "Not authenticated". 
-    
-    You need to submit a token.
+  Then execute. You will get an error : "Not authenticated". 
+  
+  You need to submit a token.
 
-    Execute utils.py to generate a token, copy it, then click on Authorize.
+  Execute utils.py to generate a token, copy it, then click on Authorize.
 
 ## Run the pytests : 
   - pytest
