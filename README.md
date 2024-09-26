@@ -58,7 +58,11 @@ It includes:
         "marque": "audi",
         "modèle": "4000"
         }
-        Then execute. You will get an error : "Not authenticated". You need to submit a token.
+
+        Then execute. You will get an error : "Not authenticated". 
+        
+        You need to submit a token.
+        
         Execute utils.py to generate a token, copy it, then click on Authorize.
 ## Run the pytests : 
   - pytest
