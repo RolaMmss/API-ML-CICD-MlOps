@@ -11,17 +11,20 @@ It includes:
 
 ## Setup:
 1. Create/activate a virtual environement and install requirements:
+
   - python -m venv myenv
   - source myenv/bin/activate
   - pip install -r requirements.txt
 2. Create .env file in the root directory to save secret information such as token of the API
 
 3. Execute these commands to build sqlite databases
+
     sqlite3 cars.db < database_building/create_table.sql
     sqlite3 cars.db  < database_building/import_table.sql
 4. Execute data_cleaning.py to get the cleaned table first_run_2017_CleanDataset
 
 5. Modelisation and MLflow
+
   - Execute modelisation.py 
   - Launch MLflow : mlflow ui
 
@@ -96,7 +99,7 @@ Execute create_ACR.sh in the terminal as follows:
   cd to the directory root next to api,model, .env, etc...
 
   chmod +x scripts/create_ACR.sh
-  
+
   scripts/create_ACR.sh
 
 ## To test the deployed api on azure
