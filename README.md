@@ -4,10 +4,10 @@ The objective of this project is to develop an API that exposes an artificial in
 
 It includes:
 
-    - A machine learning model and mlflow tracking on azure
-    - A deployed API (FastAPI) on Azure with token-based authentication and Ml-ops Monitoring 
-    - A Streamlit which serves as user interface
-    - The procedure for building an SQL database on Azure to save predictions on production
+  - A machine learning model and mlflow tracking on azure
+  - A deployed API (FastAPI) on Azure with token-based authentication and Ml-ops Monitoring 
+  - A Streamlit which serves as user interface
+  - The procedure for building an SQL database on Azure to save predictions on production
 
 ## Setup:
 1. Create/activate a virtual environement and install requirements:
