@@ -34,6 +34,7 @@ It includes:
     python -m api.main
 2. Add /docs to the url
     http://0.0.0.0:8000/docs
+    
   A FASTAPI Swaggge UI will open. Click on predict then on Try it out to generate a prediction. Fill the requested body for example:
 
       {"etat_de_route": "1",
