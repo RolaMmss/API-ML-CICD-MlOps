@@ -72,14 +72,19 @@ It includes:
 
 ## Deploy the API
   - Build and test the Docker Image locally: 
-          - docker build -t dockerimage:latest -f api/Dockerfile .
-          - docker run -p 8000:8000 dockerimage:latest
-          - then /docs
-          Remark: Each time you build a new image, you have to go to Docker extension in vscode to delete the existant containers.
+
+    - docker build -t dockerimage:latest -f api/Dockerfile .
+
+    - docker run -p 8000:8000 dockerimage:latest
+
+    - then /docs
+
+    Remark: Each time you build a new image, you have to go to Docker extension in vscode to delete the existant containers.
+
   - Tag the image before pushing it to dockerhub
-          - docker login
-          - docker tag dockerimage repo_docker:latest
-          - docker push rola123/repo_docker:latest
+    - docker login
+    - docker tag dockerimage repo_docker:latest
+    - docker push rola123/repo_docker:latest
 
 ## Run streamlit for the deployed api
 streamlit run streamlit.py
@@ -87,9 +92,12 @@ streamlit run streamlit.py
 # Remarks:
 ## To create Azure Container Instance
 Execute create_ACR.sh in the terminal as follows:
-    cd to the directory root next to api,model, .env, etc...
-    chmod +x scripts/create_ACR.sh
-    scripts/create_ACR.sh
+
+  cd to the directory root next to api,model, .env, etc...
+
+  chmod +x scripts/create_ACR.sh
+  
+  scripts/create_ACR.sh
 
 ## To test the deployed api on azure
 - Be sure that ACR container is running on azure.
