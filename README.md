@@ -60,12 +60,12 @@ It includes:
     "modèle": "4000"
     }
 
-  Then execute. You will get an error : "Not authenticated". 
-  
-  You need to submit a token.
+    Then execute. You will get an error : "Not authenticated". 
+    
+    You need to submit a token.
 
-  Execute utils.py to generate a token, copy it, then click on Authorize.
-  
+    Execute utils.py to generate a token, copy it, then click on Authorize.
+
 ## Run the pytests : 
   - pytest
   - PYTHONPATH=./ pytest api/tests/           ( in case it didn't find api, this will lead to the correct path)
