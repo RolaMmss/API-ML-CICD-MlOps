@@ -5,6 +5,7 @@ on:
     branches:
       - main  
       - develop
+      - test-ci-workflow
     paths:
       - 'api/**'
       - '.github/workflows/api_continuous_deployment.yaml'
