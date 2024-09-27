@@ -2,7 +2,7 @@
 
 CREATE TABLE CarPredictions (
     id INT PRIMARY KEY IDENTITY(1,1),
-    etat_de_route NVARCHAR(50),
+    etat_de_route INT,
     carburant NVARCHAR(50),
     turbo NVARCHAR(50),
     nombre_portes NVARCHAR(50),

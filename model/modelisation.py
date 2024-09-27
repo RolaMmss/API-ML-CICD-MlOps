@@ -12,7 +12,7 @@ from sklearn.ensemble import RandomForestRegressor
 import pickle
 
  # Get the absolute path to the cars.db file located in the parent directory
-db_path = os.path.abspath("cars.db")
+db_path = os.path.abspath("../cars.db")
 
 # Connect to the existing cars.db file
 connection = sqlite3.connect(db_path)
@@ -30,6 +30,15 @@ y = df['prix']
 X = df.drop(['prix'], axis=1)
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=42)
 
+#----------------------------------------------
+# Save X_test and y_test to pickle files
+with open("X_test.pkl", "wb") as f:
+    pickle.dump(X_test, f)
+
+with open("y_test.pkl", "wb") as f:
+    pickle.dump(y_test, f)
+  #--------------------------------------------
+    
 categorical_features = ['etat_de_route', 'carburant', 'turbo', 'nombre_portes', 'type_vehicule', 'roues_motrices', 'emplacement_moteur', 'type_moteur', 'nombre_cylindres', 'systeme_carburant', 'marque', 'modèle']
 numeric_features = ['empattement', 'longueur', 'largeur', 'hauteur', 'poids_vehicule', 'taille_moteur', 'taux_alésage', 'course', 'taux_compression', 'chevaux', 'tour_moteur', 'consommation_ville', 'consommation_autoroute']
 

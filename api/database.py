@@ -12,8 +12,8 @@ import random
 # Environment Variables: We use load_dotenv() to load the database URL from the .env file.
 load_dotenv()
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
-
+# DATABASE_URL = os.environ.get("DATABASE_URL")  # production
+DATABASE_URL = "sqlite:///./cars.db"  # local
 # Connect to the SQLite database specified in the .env file.
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 # Session Management: SessionLocal provides session management for the database.
@@ -60,7 +60,7 @@ class Prediction(Base):
 
     prediction_id = Column(String, primary_key=True, index=True)
     timestamp = Column(String)
-    etat_de_route = Column(String)
+    etat_de_route = Column(Integer)
     carburant = Column(String)
     turbo = Column(String)
     nombre_portes = Column(String)
