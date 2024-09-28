@@ -106,7 +106,11 @@ Execute create_ACR.sh in the terminal as follows:
 ## To test the deployed api on azure
 - Be sure that ACR container is running on azure.
 - Get IP from ACR, open a new window and add the required port 8000.
-     http://20.19.201.109:8000/docs/
+- You can now test the API.
+- To test the API, you can use the following command in the terminal:
+  containerinstanceapi.francecentral.azurecontainer.io:8000/docs
+     <!-- http://20.19.201.109:8000/docs/ -->
+
 
 
 ## Azure SQL Database Creation Script
