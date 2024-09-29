@@ -2,12 +2,22 @@
 ## Purpose
 The objective of this project is to develop an API that exposes an artificial intelligence model, monitor this model, integrate the API into an application, program automated tests for this model, and create a continuous delivery pipeline for this AI model in an MLOps approach to automate the steps of validation, testing, packaging, and deployment of the model.
 
+It contains a single endpoint allowing a prediction to be made from the explanatory variables. It includes token-based authentication.
+
 It includes:
 
   - A machine learning model and mlflow tracking on azure
   - A deployed API (FastAPI) on Azure with token-based authentication and Ml-ops Monitoring 
   - A Streamlit which serves as user interface
   - The procedure for building an SQL database on Azure to save predictions on production
+
+## Code Structure
+
+  - **main.py:** The entry point of the API application. It initializes the FastAPI application, sets up routing, and may include logic for starting the server.
+  - **predict.py:** Contains the logic for making predictions with the machine learning model. It likely defines FastAPI endpoints to receive prediction requests and return the results.
+  - **utils.py:** Contains utility functions used across the API application. This may include authentication logic, helpers for data processing, etc.
+  - **database.py:** contains the logic for connecting to and interacting with the database. It may include functions for creating database sessions, data models, and CRUD operations
+  
 
 ## Setup:
 1. Create/activate a virtual environement and install requirements:

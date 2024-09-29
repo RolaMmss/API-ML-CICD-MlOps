@@ -39,6 +39,18 @@ class InputData(BaseModel):
     modèle: str
 
 async def has_access(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
+    """
+    Validates the access token provided in the request headers.
+
+    Args:
+        credentials (HTTPAuthorizationCredentials): The bearer token credentials.
+
+    Returns:
+        bool: True if the user has access, otherwise raises HTTPException.
+
+    Raises:
+        HTTPException: If the token is invalid or the user is not authorized.
+    """
     token = credentials.credentials
     load_dotenv()
     SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -60,16 +72,44 @@ async def has_access(credentials: HTTPAuthorizationCredentials = Depends(HTTPBea
 
 
 def predict_single(model, input_data: InputData):
+    """
+    Make a prediction using the loaded model and the input order.
+
+    Args:
+        model: The pre-trained model.
+        input_data : The input data for making the prediction.
+
+    Returns:
+        int: The predicted value.
+    """
     input_df = pd.DataFrame([input_data.model_dump()])
     prediction = model.predict(input_df)
     return prediction[0]
 
 def get_model():
+    """
+    Load a model from a pickle file.
+
+    Args:
+        random_forest_model: The name of the model run.
+
+    Returns:
+        The loaded model.
+    """
     with open('./model/random_forest_model.pkl', 'rb') as f:
         model = pickle.load(f)
     return model
 
 def generate_token(to_encode):
+    """
+    Generate a JWT token.
+
+    Args:
+        to_encode (str): The string to encode in the token.
+
+    Returns:
+        str: The generated JWT token.
+    """
     load_dotenv()
     SECRET_KEY = os.environ.get("SECRET_KEY")
     ALGORITHM = "HS256"
