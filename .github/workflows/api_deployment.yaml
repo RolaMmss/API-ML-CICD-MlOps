@@ -59,5 +59,4 @@ jobs:
                 --registry-password ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Test Endpoint
-      run: curl -I containerinstanceapi.francecentral.azurecontainer.io:8000/docs
-      # jhb
+      run: curl -I containerinstanceapi.francecentral.azurecontainer.io:8000/

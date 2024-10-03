@@ -11,6 +11,8 @@ import uvicorn
 from sqlalchemy.orm import sessionmaker
 import os
 from sqlalchemy import create_engine
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 # Initialize FastAPI
 app = FastAPI()
@@ -25,8 +27,8 @@ app.include_router(
 )
 
 if __name__ == "__main__":
-    DATABASE_URL = os.environ.get("DATABASE_URL")
-
+    DATABASE_URL = os.environ.get("DATABASE_URL")   # production
+    # DATABASE_URL = "sqlite:///./cars.db"  # local
     # Connect to the SQLite database specified in the .env file.
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
     # Session Management: SessionLocal provides session management for the database.

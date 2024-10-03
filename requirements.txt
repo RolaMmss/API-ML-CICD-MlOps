@@ -12,6 +12,7 @@ mlflow
 python-dotenv
 python-jose 
 sqlalchemy
+pyodbc
 pytest
 pytest-asyncio
 httpx
@@ -19,3 +20,5 @@ httpx
 pydantic 
 starlette 
 typing-extensions
+
+pypyodbc
