@@ -4,8 +4,8 @@ import sqlite3
 import numpy as np
 
 def data_cleaning(connection,run_name):
-# # Connect to the existing cars.db file
-# connection = sqlite3.connect("cars.db")
+# Connect to the existing cars.db file
+    connection = sqlite3.connect("cars.db")
 
     df = pd.read_sql_query("SELECT * FROM Cars",connection)
 

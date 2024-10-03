@@ -7,6 +7,7 @@ from api.database import Base, Car, Prediction, generate_id, create_db_predictio
 # Use an in-memory SQLite database for testing
 DATABASE_URL_test = 'sqlite:///:memory:'
 
+
 # Create a new engine instance
 engine = create_engine(DATABASE_URL_test, connect_args={"check_same_thread": False})
 
@@ -40,7 +41,7 @@ def test_create_db_prediction(db_session):
     """Test creating a prediction in the database."""
     prediction_data = {
         "timestamp": "2024-06-19T12:00:00Z",
-        "etat_de_route": "Clear",
+        "etat_de_route": 2,
         "carburant": "Gasoline",
         "turbo": "Yes",
         "nombre_portes": "Four",

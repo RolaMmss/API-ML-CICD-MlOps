@@ -1,0 +1,15 @@
+artifact_uri: file:///home/utilisateur/Bureau/API-ML-CICD-MlOps/model/mlruns/901488642396239772/6872bc7cf6d1435394e66ff6bcb84747/artifacts
+end_time: 1727397452260
+entry_point_name: ''
+experiment_id: '901488642396239772'
+lifecycle_stage: active
+run_id: 6872bc7cf6d1435394e66ff6bcb84747
+run_name: experiment_1_run_1
+run_uuid: 6872bc7cf6d1435394e66ff6bcb84747
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727397449209
+status: 3
+tags: []
+user_id: utilisateur

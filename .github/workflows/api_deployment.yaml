@@ -36,26 +36,27 @@ jobs:
           az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
           
           # Check if the container exists
-          container_exists=$(az container show --resource-group ${{ secrets.RESOURCE_GROUP }} --name container-instance-api --query "name" -o tsv || echo "notfound")
+          container_exists=$(az container show --resource-group ${{ secrets.RESSOURCE_GROUP }} --name containerinstanceapi --query "name" -o tsv || echo "notfound")
       
           if [ "$container_exists" != "notfound" ]; then
             echo "Container instance exists. Deleting..."
-            az container delete --resource-group ${{ secrets.RESOURCE_GROUP }} --name container-instance-api --yes
+            az container delete --resource-group ${{ secrets.RESSOURCE_GROUP }} --name containerinstanceapi --yes
             echo "Container instance deleted."
           else
             echo "Container instance does not exist."
           fi
       
           az container create \
-                --resource-group $RESSOURCE_GROUP \
-                --name container-instance-api \
-                --image $DOCKERHUB_USERNAME/repo_docker:latest \
+                --resource-group ${{ secrets.RESSOURCE_GROUP }} \
+                --name containerinstanceapi \
+                --image ${{ secrets.DOCKERHUB_USERNAME }}/repo_docker:latest \
                 --cpu 1 \
                 --memory 1 \
                 --ip-address public \
-                --ports 8000 8501 \
-                --registry-username $DOCKERHUB_USERNAME \
-                --registry-password $DOCKERHUB_PASSWORD
+                --dns-name-label containerinstanceapi \
+                --ports 80 8000 \
+                --registry-username ${{ secrets.DOCKERHUB_USERNAME }} \
+                --registry-password ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Test Endpoint
-      run: curl -I container-instance-api.francecentral.azurecontainer.io:8000/docs
+      run: curl -I containerinstanceapi.francecentral.azurecontainer.io:8000/

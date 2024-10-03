@@ -1,4 +1,4 @@
-#!/home/utilisateur/Bureau/API-ML-CICD-MlOps/myenv/bin/python3
+#!/home/utilisateur/Bureau/API-ML-CICD-MlOps/myenv/bin/python3.9
 
 import sys
 import json
